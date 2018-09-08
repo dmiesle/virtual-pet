@@ -4,7 +4,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 public class VirtualPetTest {
-	Pet underTest = new Pet("My Pet", 1, 1, 1);
+	Pet underTest = new Pet("My Pet", 1, 1, 1, 10, 1, 1);
 
 	@Test
 	public void doesThePetHaveANameMyPet() {
@@ -67,4 +67,9 @@ public class VirtualPetTest {
 		int check = underTest.getRested();
 		assertThat(check, is(0));
 	}
+	@Test
+	public void isThePetTraingAt10() {
+		int check = underTest.getRested();
+		assertThat(check, is(1));
+}
 }

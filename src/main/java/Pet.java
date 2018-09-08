@@ -7,7 +7,7 @@ public class Pet {
 	private int rested;
 
 	// this is my constructor
-	public Pet(String petName, int foodLevel, int entertained, int rested) {
+	public Pet(String petName, int foodLevel, int entertained, int rested, int experience, int level, int alive) {
 		this.petName = petName;
 		this.foodLevel = foodLevel;
 		this.entertained = entertained;
