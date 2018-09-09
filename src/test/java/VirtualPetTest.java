@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 	Pet underTest = new Pet("My Pet", 1, 1, 1, 10, 1, 1, "Curious");
-	
+
 	@Test
 	public void doesThePetHaveANameMyPet() {
 		String check = underTest.getPetName();
@@ -39,79 +39,90 @@ public class VirtualPetTest {
 		int check = underTest.getEntertained();
 		assertThat(check, is(1));
 	}
+
 	@Test
 	public void doesThePetsEntertainementGoUpTo2IfAttend() {
 		underTest.attend();
 		int check = underTest.getEntertained();
 		assertThat(check, is(2));
 	}
+
 	@Test
 	public void doesThePetsEntertainementGoDownTo0IfNeglect() {
 		underTest.neglect();
 		int check = underTest.getEntertained();
 		assertThat(check, is(0));
 	}
-	
+
 	@Test
 	public void isThePetRestedAt1() {
 		int check = underTest.getRested();
 		assertThat(check, is(1));
 	}
+
 	@Test
 	public void doesThePetsRestedGoUpTo2IfSleep() {
 		underTest.sleep();
 		int check = underTest.getRested();
 		assertThat(check, is(2));
 	}
+
 	@Test
 	public void doesThePetsRestedGoDownTo0IfActive() {
 		underTest.active();
 		int check = underTest.getRested();
 		assertThat(check, is(0));
 	}
+
 	@Test
 	public void isThePetExperienceAt10() {
 		int check = underTest.getExperience();
 		assertThat(check, is(10));
-}
+	}
+
 	@Test
 	public void doesThePetExperienceIncreasefrom10To20() {
 		underTest.learn();
 		int check = underTest.getExperience();
 		assertThat(check, is(20));
-}
+	}
+
 	@Test
 	public void isThePetLevelAt1() {
 		int check = underTest.getLevel();
 		assertThat(check, is(1));
-}
+	}
+
 	@Test
 	public void doesThePetsLevelIncreaseby1to2AtLevelUop() {
 		underTest.levelUp();
 		int check = underTest.getLevel();
 		assertThat(check, is(2));
-}
+	}
+
 	@Test
 	public void isThePetAlive() {
 		boolean alive = underTest.alive(1);
 		assertTrue(alive);
-}
+	}
+
 	@Test
 	public void isThePetDead() {
 		boolean dead = underTest.alive(0);
 		assertFalse(dead);
-}
+	}
+
 	@Test
 	public void isThePetTypeCurious() {
 		String check = underTest.getPetType();
 		assertThat(check, is("Curious"));
-}
-public class VirtualPetResourceTest {
-		Resources underTest = Resources(5);
 	}
+
 	@Test
 	public void isThereFood5() {
-		int check = underTest.getFood();
-		assertThat(check, is(1));
-}	
+		Resources underTest1 = new Resources(5);
+		int check = underTest1.getFood();
+		assertThat(check, is(5));
+	}
+	
 }
