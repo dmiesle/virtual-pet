@@ -7,6 +7,20 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 	Pet underTest = new Pet("My Pet", 1, 1, 1, 10, 1, 1, "Curious");
+	Resource underTest1 = new Resource(5);
+	PetStatus underTestPetStatus = new PetStatus();
+	
+	@Test
+	public void doesTickCycleThroughOptions() {
+	
+	
+	//public void doesCuriousIncreaseXPforTraining() {
+		//int check = underTestPetStatus.applyCurious(); 
+		
+		
+	}
+	
+	
 
 	@Test
 	public void doesThePetHaveANameMyPet() {
@@ -120,7 +134,6 @@ public class VirtualPetTest {
 
 	@Test
 	public void isThereFood5() {
-		Resources underTest1 = new Resources(5);
 		int check = underTest1.getFood();
 		assertThat(check, is(5));
 	}

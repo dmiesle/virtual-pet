@@ -9,19 +9,7 @@ public class Pet {
 	private int level;
 	private int alive;
 	private String petType;
-
-	// this is my constructor
-	public Pet(String petName, int foodLevel, int entertained, int rested, int experience, int level, int alive, String petType) {
-		this.petName = petName;
-		this.foodLevel = foodLevel;
-		this.entertained = entertained;
-		this.rested = rested;
-		this.experience = experience;
-		this.level = level;
-		this.alive = alive;
-		this.petType = petType;
-	}
-
+	
 	// this is the getter
 	public String getPetName() {
 		return petName;
@@ -98,6 +86,16 @@ public class Pet {
 	public String getPetType() {
 		return petType;
 	}
-
+	// this is my constructor
+	public Pet(String petName, int foodLevel, int entertained, int rested, int experience, int level, int alive, String petType) {
+		this.petName = petName;
+		this.foodLevel = foodLevel;
+		this.entertained = entertained;
+		this.rested = rested;
+		this.experience = experience;
+		this.level = level;
+		this.alive = alive;
+		this.petType = petType;
+	}
 
 }
