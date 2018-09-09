@@ -75,12 +75,8 @@ public class Pet {
 
 	}
 
-	public boolean alive(int alive) {
-		if (alive == 1) {
-			return true;
-		} else {
-			return false;
-		}
+	public int getAlive() {
+		return alive;
 	}
 
 	public String getPetType() {
@@ -96,6 +92,14 @@ public class Pet {
 		this.level = level;
 		this.alive = alive;
 		this.petType = petType;
+	}
+
+	public String tick() {
+		entertained = entertained -1;
+		rested = rested -1;
+		foodLevel = foodLevel -1;
+		return (petName + " is done with that activity");
+	
 	}
 
 }

@@ -8,19 +8,15 @@ import org.junit.Test;
 public class VirtualPetTest {
 	Pet underTest = new Pet("My Pet", 1, 1, 1, 10, 1, 1, "Curious");
 	Resource underTest1 = new Resource(5);
-	PetStatus underTestPetStatus = new PetStatus();
 	
 	@Test
-	public void doesTickCycleThroughOptions() {
-	
-	
-	//public void doesCuriousIncreaseXPforTraining() {
-		//int check = underTestPetStatus.applyCurious(); 
-		
-		
+	public void doesTickConsumeAndActive() {
+	String check = underTest.tick();
+	assertThat(check, is("My Pet is done with that activity"));
 	}
 	
-	
+	//public void doesCuriousIncreaseXPforTraining() {
+		//int check = underTestPetStatus.applyCurious(); 	
 
 	@Test
 	public void doesThePetHaveANameMyPet() {
@@ -116,14 +112,8 @@ public class VirtualPetTest {
 
 	@Test
 	public void isThePetAlive() {
-		boolean alive = underTest.alive(1);
-		assertTrue(alive);
-	}
-
-	@Test
-	public void isThePetDead() {
-		boolean dead = underTest.alive(0);
-		assertFalse(dead);
+		int check = underTest.getAlive();
+		assertThat(check, is(1));
 	}
 
 	@Test
