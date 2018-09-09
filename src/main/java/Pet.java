@@ -5,13 +5,21 @@ public class Pet {
 	private int foodLevel;
 	private int entertained;
 	private int rested;
+	private int experience;
+	private int level;
+	private int alive;
+	private String petType;
 
 	// this is my constructor
-	public Pet(String petName, int foodLevel, int entertained, int rested, int experience, int level, int alive) {
+	public Pet(String petName, int foodLevel, int entertained, int rested, int experience, int level, int alive, String petType) {
 		this.petName = petName;
 		this.foodLevel = foodLevel;
 		this.entertained = entertained;
 		this.rested = rested;
+		this.experience = experience;
+		this.level = level;
+		this.alive = alive;
+		this.petType = petType;
 	}
 
 	// this is the getter
@@ -52,13 +60,44 @@ public class Pet {
 	}
 
 	public void sleep() {
-		rested = rested +1;
-		
+		rested = rested + 1;
+
 	}
 
 	public void active() {
-		rested = rested -1;
-		
+		rested = rested - 1;
+
 	}
+
+	public int getExperience() {
+		return experience;
+	}
+
+	public void learn() {
+		experience = experience + 10;
+
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void levelUp() {
+		level = level + 1;
+
+	}
+
+	public boolean alive(int alive) {
+		if (alive == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public String getPetType() {
+		return petType;
+	}
+
 
 }
