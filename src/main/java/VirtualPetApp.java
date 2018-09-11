@@ -11,7 +11,11 @@ public class VirtualPetApp {
 		System.out.println("Your new pet needs a name. Please give it one now:");
 		String name = input.nextLine();
 		Pet myPet = new Pet(name, 5, 2, 3, 0, 1, 1, "Basic");
+		Resource myResource = new Resource(0, 0, 0, 0, 0, "");
 		System.out.println(name + " is so excited you are going to care for it. Your pet is " + myPet.getPetType());
+		System.out.println(name + " is " + myStatus.getHungerStatus(myPet.getFoodLevel()) + " , is feeling "
+				+ myStatus.getEntertainmentStatus(myPet.getEntertained()) + ", and has enough energy that they are "
+				+ myStatus.getRestedStatus(myPet.getRested()) + ".");
 		System.out.println("Right now " + name + " is waiting for you to do something");
 		do {
 			System.out.println("1 - Check on " + name + ".");
@@ -24,15 +28,20 @@ public class VirtualPetApp {
 			menuOption = input.nextLine();
 
 			if (menuOption.equals("1")) {
-				System.out.println(name + " is " + myStatus.getHungerStatus(myPet.getFoodLevel()) + " , "
-						+ myStatus.getEntertainmentStatus(myPet.getEntertained()) + ", and "
+				System.out.println(name + " is " + myStatus.getHungerStatus(myPet.getFoodLevel()) + " , is feeling "
+						+ myStatus.getEntertainmentStatus(myPet.getEntertained()) + ", and has enough energy that they are "
 						+ myStatus.getRestedStatus(myPet.getRested()) + ".");
 			} else if (menuOption.equals("2")) {
 				myPet.feed();
 			} else if (menuOption.equals("3")) {
 				myPet.attend();
 				myPet.attend();
-				myPet.tick();
+				if (myPet.getExperience() >= 100) {
+					myPet.levelUp();
+					myPet.setExperience();
+					System.out.println("Congratulations! "+ name + "Has just gained enough experience to level up. " + name + " is now level"+ myPet.getLevel()+"!");
+				}
+
 				if (myPet.getAlive() != 1) {
 					System.out.println("Your pet has died. Goodbye");
 					System.exit(0);
@@ -40,7 +49,13 @@ public class VirtualPetApp {
 			} else if (menuOption.equals("4")) {
 				myPet.learn();
 				myPet.learn();
-				myPet.tick();
+				if (myPet.getExperience() >= 100) {
+					myPet.levelUp();
+					myPet.setExperience();
+					System.out.println("Congratulations! "+ name + "Has just gained enough experience to level up. " + name + " is now level"+ myPet.getLevel()+"!");
+
+				}
+
 				if (myPet.getAlive() != 1) {
 					System.out.println("Your pet has died. Goodbye");
 					System.exit(0);
@@ -49,7 +64,6 @@ public class VirtualPetApp {
 				myPet.sleep();
 				myPet.sleep();
 				myPet.sleep();
-				myPet.tick();
 				if (myPet.getAlive() != 1) {
 					System.out.println("Your pet has died. Goodbye");
 					System.exit(0);
@@ -64,9 +78,11 @@ public class VirtualPetApp {
 				System.out.println("Your pet wanders off to find someone who cares about living beings.");
 				System.exit(0);
 			}
-			System.out.println("What else do you want to do with "+ name + "?");
-		} while (menuOption != "7");
-		input.close();
+			System.out.println("What else do you want to do with " + name + "?");
+			myResource.setTickCount();
+			if (myResource.getLastTick() == (10 / myPet.getLevel())) {
+				myPet.tick();
+			}
+		}while(menuOption!="7");input.close();
 
-	}
-}
+}}

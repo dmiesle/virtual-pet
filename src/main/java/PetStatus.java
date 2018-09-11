@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class PetStatus {
 
 	}
 
-	List<String> entertainments = Arrays.asList("Bored", "Restless", "Content", "Happy", "Overstimulated");
+	List<String> entertainments = Arrays.asList("Bored", "Restless", "Happy", "Loved", "Overstimulated");
 
 	public String getEntertainmentStatus(int entertained) {
 		return entertainments.get(entertained);
@@ -24,5 +23,6 @@ public class PetStatus {
 		return rests.get(rested);
 
 	}
+	List<String> personality = Arrays.asList("Basic", "Curios", "Big Appetited", "High Maintenance", "Lazy", "Laid-back" );
 
 }

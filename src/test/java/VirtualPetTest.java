@@ -7,16 +7,53 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 	Pet underTest = new Pet("My Pet", 1, 1, 1, 10, 1, 1, "Curious");
-	Resource underTest1 = new Resource(5);
-	
+	Resource underTest1 = new Resource(5, 0, 0, 0, 0, "Feed");
+
 	@Test
-	public void doesTickConsumeAndActive() {
-	String check = underTest.tick();
-	assertThat(check, is("My Pet is done with that activity"));
+	public void add1ToTickCount() {
+		int check = underTest1.setTickCount();
+		assertThat(check, is(1));
 	}
 	
-	//public void doesCuriousIncreaseXPforTraining() {
-		//int check = underTestPetStatus.applyCurious(); 	
+	@Test
+	public void returnTickCount() {
+		int check = underTest1.getLastTick();
+	}
+	
+	@Test
+	public void didEntertainLastTimeReport0() {
+		int check = underTest1.getEntertainedLast();
+		assertThat(check, is(0));
+	}
+
+	@Test
+	public void didTheUserSelectEntertainLastTimeIncreasingto1() {
+		underTest.attend();
+		int check = underTest1.setEntertained();
+		assertThat(check, is(1));
+	}
+	
+	@Test
+	public void didFeedLastTimeReport0() {
+		int check = underTest1.getLastFeed();
+		assertThat(check, is(0));
+	}
+
+	@Test
+	public void didTheUserSelectFeedLastTimeIncreasingto1() {
+		underTest1.feed();
+		int check = underTest1.getLastFeed();
+		assertThat(check, is(1));
+	}
+
+	@Test
+	public void doesTickConsumeAndActive() {
+		String check = underTest.tick();
+		assertThat(check, is("My Pet is done with that activity"));
+	}
+
+	// public void doesCuriousIncreaseXPforTraining() {
+	// int check = underTestPetStatus.applyCurious();
 
 	@Test
 	public void doesThePetHaveANameMyPet() {
@@ -127,5 +164,5 @@ public class VirtualPetTest {
 		int check = underTest1.getFood();
 		assertThat(check, is(5));
 	}
-	
+
 }

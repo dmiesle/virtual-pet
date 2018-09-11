@@ -82,6 +82,11 @@ public class Pet {
 	public String getPetType() {
 		return petType;
 	}
+	
+	public void setExperience() {
+		experience = 0;
+	}
+	
 	// this is my constructor
 	public Pet(String petName, int foodLevel, int entertained, int rested, int experience, int level, int alive, String petType) {
 		this.petName = petName;
@@ -98,6 +103,8 @@ public class Pet {
 		entertained = entertained -1;
 		rested = rested -1;
 		foodLevel = foodLevel -1;
+		if(foodLevel ==0 || entertained ==0 || rested == 0);
+		alive = 0;
 		return (petName + " is done with that activity");
 	
 	}
