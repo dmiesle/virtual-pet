@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class PetStatus {
 	List<String> hungers = Arrays.asList("Dead", "Starving", "Hangry", "Hungry", "Peckish", "Satisified", "Content",
@@ -23,6 +24,13 @@ public class PetStatus {
 		return rests.get(rested);
 
 	}
-	List<String> personality = Arrays.asList("Basic", "Curios", "Big Appetited", "High Maintenance", "Lazy", "Laid-back" );
 
+	List<String> personalities = Arrays.asList("Basic", "Curios", "Big Appetited", "High Maintenance", "Lazy",
+			"Laid-back");
+
+
+	public String getPersonality() {
+		Random randomNumber = new Random();
+		return personalities.get(randomNumber.nextInt((5 - 0)+1));
+	}
 }

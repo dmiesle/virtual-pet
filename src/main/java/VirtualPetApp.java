@@ -10,11 +10,12 @@ public class VirtualPetApp {
 		System.out.println("Congratulations! You just found a new pet.");
 		System.out.println("Your new pet needs a name. Please give it one now:");
 		String name = input.nextLine();
-		Pet myPet = new Pet(name, 5, 2, 3, 0, 1, 1, "Basic");
+		String personality = myStatus.getPersonality();
+		Pet myPet = new Pet(name, 5, 2, 3, 0, 1, 1, personality);
 		Resource myResource = new Resource(0, 0, 0, 0, 0, "");
 		System.out.println(name + " is so excited you are going to care for it. Your pet is " + myPet.getPetType());
 		System.out.println(name + " is " + myStatus.getHungerStatus(myPet.getFoodLevel()) + " , is feeling "
-				+ myStatus.getEntertainmentStatus(myPet.getEntertained()) + ", and has enough energy that they are "
+				+ myStatus.getEntertainmentStatus(myPet.getEntertained()) + ", and has enough rest that they are "
 				+ myStatus.getRestedStatus(myPet.getRested()) + ".");
 		System.out.println("Right now " + name + " is waiting for you to do something");
 		do {
@@ -29,44 +30,62 @@ public class VirtualPetApp {
 
 			if (menuOption.equals("1")) {
 				System.out.println(name + " is " + myStatus.getHungerStatus(myPet.getFoodLevel()) + " , is feeling "
-						+ myStatus.getEntertainmentStatus(myPet.getEntertained()) + ", and has enough energy that they are "
-						+ myStatus.getRestedStatus(myPet.getRested()) + ".");
+						+ myStatus.getEntertainmentStatus(myPet.getEntertained())
+						+ ", and has enough energy that they are " + myStatus.getRestedStatus(myPet.getRested()) + ".");
 			} else if (menuOption.equals("2")) {
 				myPet.feed();
 			} else if (menuOption.equals("3")) {
-				myPet.attend();
-				myPet.attend();
-				if (myPet.getExperience() >= 100) {
-					myPet.levelUp();
-					myPet.setExperience();
-					System.out.println("Congratulations! "+ name + "Has just gained enough experience to level up. " + name + " is now level"+ myPet.getLevel()+"!");
+				if (myResource.getLastChoice() == "entertained") {
+					System.out.println("Your pet is not learnign anything more right now.");
+					break;
+				} else {
+					myPet.attend();
+					myPet.attend();
+					if (myPet.getExperience() >= 100) {
+						myPet.levelUp();
+						myPet.setExperience();
+						System.out
+								.println("Congratulations! " + name + "Has just gained enough experience to level up. "
+										+ name + " is now level" + myPet.getLevel() + "!");
+					}
+					if (myPet.getAlive() != 1) {
+						System.out.println("Your pet has died. Goodbye");
+						System.exit(0);
+					}
 				}
-
-				if (myPet.getAlive() != 1) {
-					System.out.println("Your pet has died. Goodbye");
-					System.exit(0);
-				}
+				
 			} else if (menuOption.equals("4")) {
-				myPet.learn();
-				myPet.learn();
-				if (myPet.getExperience() >= 100) {
-					myPet.levelUp();
-					myPet.setExperience();
-					System.out.println("Congratulations! "+ name + "Has just gained enough experience to level up. " + name + " is now level"+ myPet.getLevel()+"!");
-
+				if (myResource.getLastChoice() == "entertained") {
+					System.out.println("Your pet is not interested in playing right now.");
+					break;
+				} else {
+					myPet.learn();
+					myPet.learn();
+					if (myPet.getExperience() >= 100) {
+						myPet.levelUp();
+						myPet.setExperience();
+						System.out
+								.println("Congratulations! " + name + "Has just gained enough experience to level up. "
+										+ name + " is now level" + myPet.getLevel() + "!");
+					}
+					if (myPet.getAlive() != 1) {
+						System.out.println("Your pet has died. Goodbye");
+						System.exit(0);
+					}
 				}
-
-				if (myPet.getAlive() != 1) {
-					System.out.println("Your pet has died. Goodbye");
-					System.exit(0);
-				}
+				
 			} else if (menuOption.equals("5")) {
-				myPet.sleep();
-				myPet.sleep();
-				myPet.sleep();
-				if (myPet.getAlive() != 1) {
-					System.out.println("Your pet has died. Goodbye");
-					System.exit(0);
+				if (myResource.getLastChoice() == "rested") {
+					System.out.println("Your pet is not interested in going back to sleep.");
+					break;
+				} else {
+					myPet.sleep();
+					myPet.sleep();
+					myPet.sleep();
+					if (myPet.getAlive() != 1) {
+						System.out.println("Your pet has died. Goodbye");
+						System.exit(0);
+					}
 				}
 			} else if (menuOption.equals("6")) {
 				myPet.tick();
@@ -83,6 +102,8 @@ public class VirtualPetApp {
 			if (myResource.getLastTick() == (10 / myPet.getLevel())) {
 				myPet.tick();
 			}
-		}while(menuOption!="7");input.close();
+		} while (menuOption != "7");
+		input.close();
 
-}}
+	}
+}

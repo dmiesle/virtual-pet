@@ -1,5 +1,6 @@
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -7,19 +8,51 @@ import org.junit.Test;
 
 public class VirtualPetTest {
 	Pet underTest = new Pet("My Pet", 1, 1, 1, 10, 1, 1, "Curious");
-	Resource underTest1 = new Resource(5, 0, 0, 0, 0, "Feed");
+	Resource underTest1 = new Resource(5, 0, 0, 0, 0, "feed");
+
+	@Test
+	public void checkToSeeIfMoreFoodisAdded() {
+		int check = underTest1.setMoreFood();
+		assertThat(check, is(8));
+	}
+
+	@Test
+	public void checkToSeeIfThereFoodIsConusmed() {
+		int check = underTest1.setFood();
+		assertThat(check, is(4));
+	}
+
+	@Test
+	public void checkForLastChoice() {
+		String check = underTest1.getLastChoice();
+		assertThat(check, is("feed"));
+	}
 
 	@Test
 	public void add1ToTickCount() {
 		int check = underTest1.setTickCount();
 		assertThat(check, is(1));
 	}
-	
+
 	@Test
 	public void returnTickCount() {
 		int check = underTest1.getLastTick();
+		assertThat(check, is(0));
 	}
-	
+
+	@Test
+	public void didSleepLastTimeReport0() {
+		int check = underTest1.getRestedLast();
+		assertThat(check, is(0));
+	}
+
+	@Test
+	public void didTheUserSelectRestedLastTimeIncreasingto1() {
+		underTest.sleep();
+		int check = underTest1.setRested();
+		assertThat(check, is(1));
+	}
+
 	@Test
 	public void didEntertainLastTimeReport0() {
 		int check = underTest1.getEntertainedLast();
@@ -32,7 +65,7 @@ public class VirtualPetTest {
 		int check = underTest1.setEntertained();
 		assertThat(check, is(1));
 	}
-	
+
 	@Test
 	public void didFeedLastTimeReport0() {
 		int check = underTest1.getLastFeed();
@@ -41,7 +74,7 @@ public class VirtualPetTest {
 
 	@Test
 	public void didTheUserSelectFeedLastTimeIncreasingto1() {
-		underTest1.feed();
+		underTest1.setFeed();
 		int check = underTest1.getLastFeed();
 		assertThat(check, is(1));
 	}

@@ -7,11 +7,13 @@ public class Resource {
 	private int restedLast;
 	private String lastChoice;
 	private int tickCount;
-	
-	public int getFood(){
+
+	public int getFood() {
 		return food;
 	}
-	public Resource(int food, int foodLevelLast, int entertainedLast, int restedLast, int tickCount, String lastChoice) {
+
+	public Resource(int food, int foodLevelLast, int entertainedLast, int restedLast, int tickCount,
+			String lastChoice) {
 		this.food = food;
 		this.foodLevelLast = foodLevelLast;
 		this.entertainedLast = entertainedLast;
@@ -19,29 +21,64 @@ public class Resource {
 		this.tickCount = tickCount;
 		this.lastChoice = lastChoice;
 	}
+
 	public int getLastFeed() {
 
 		return foodLevelLast;
 	}
-	public void feed() {
-		foodLevelLast = foodLevelLast +1;
+
+	public void setFeed() {
+		foodLevelLast = foodLevelLast + 1;
 		lastChoice = "feed";
-		
+
 	}
+
 	public int getEntertainedLast() {
 		return entertainedLast;
 	}
+
 	public int setEntertained() {
-		entertainedLast = entertainedLast+1;
+		entertainedLast = entertainedLast + 1;
+		lastChoice = "entertained";
 		return entertainedLast;
 	}
+
 	public int getLastTick() {
 		return tickCount;
-		
+
 	}
+
 	public int setTickCount() {
-		tickCount = tickCount +1;
+		tickCount = tickCount + 1;
 		return tickCount;
 	}
-	
+
+	public int getRestedLast() {
+		return restedLast;
+	}
+
+	public int setRested() {
+		restedLast = restedLast + 1;
+		lastChoice = "rested";
+		return restedLast;
+	}
+
+	public String getLastChoice() {
+		return lastChoice;
+	}
+
+	public int setFood() {
+		food = food - 1;
+		return food;
+	}
+
+	public int setMoreFood() {
+		if (tickCount % 5 == 0) {
+			food = food + 3;
+			return food;
+		} else {
+			return 0;
+		}
+	}
+
 }

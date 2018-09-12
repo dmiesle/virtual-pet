@@ -1,11 +1,14 @@
  -Virtual Pet Functions -
+----food created-impacts not coded in first release---
 Food Level(Pet.feed, Pet.consume = value 0-10 (0-dead, 1-starving, 2-hangry, 3-hungry, 4-peckish, 5-satisfied, 6-content, 7-full, 8-stuffed, 9-bloated, 10-lethargic
 1-3 & 8-10 - lose -5 xp for training and entertainment
 
+----entertained created-impacts not coded in first release---
 Entertained (Pet.attend, Pet.neglect) = value 1-5 (1-bored, 2-restless, 3-content, 4-happy, 5-overstimulated)
 1 & 5 - no option to train, entertainment -10 xp
 4 - =5 xp from entertainment or training
 
+----rested created-impacts not coded in first release---
 Rested (Pet.sleep, Pet.active) = value 1-5 (1-delirious, 2-exhausted, 3- tired, 4-rested, 5-well rested)
 1 - -10xp for training and entertainment
 2- -5 xp for training and entertainment
@@ -25,6 +28,7 @@ Name - String
 Level - Dictated by function starts at 1
 Type - Basic, Curious, hungry, high maintenance, lazy, laid-back, 
 
+----personality created-impacts not coded in first release---
 Basic - no changes
 Curious - gets 20 xp for training, 5 xp for playing
 Hungry - consumes 2 food when fed
