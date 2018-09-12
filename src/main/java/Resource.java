@@ -21,10 +21,21 @@ public class Resource {
 		this.tickCount = tickCount;
 		this.lastChoice = lastChoice;
 	}
-
 	public int getLastFeed() {
 
 		return foodLevelLast;
+	}
+	public int getEntertainedLast() {
+		return entertainedLast;
+	}
+	public int getLastTick() {
+		return tickCount;
+	}
+	public int getRestedLast() {
+		return restedLast;
+	}
+	public String getLastChoice() {
+		return lastChoice;
 	}
 
 	public void setFeed() {
@@ -32,41 +43,23 @@ public class Resource {
 		lastChoice = "feed";
 
 	}
-
-	public int getEntertainedLast() {
-		return entertainedLast;
-	}
-
 	public int setEntertained() {
 		entertainedLast = entertainedLast + 1;
 		lastChoice = "entertained";
 		return entertainedLast;
 	}
 
-	public int getLastTick() {
-		return tickCount;
-
-	}
-
 	public int setTickCount() {
 		tickCount = tickCount + 1;
 		return tickCount;
 	}
-
-	public int getRestedLast() {
-		return restedLast;
-	}
-
+	
+	//setters
 	public int setRested() {
 		restedLast = restedLast + 1;
 		lastChoice = "rested";
 		return restedLast;
 	}
-
-	public String getLastChoice() {
-		return lastChoice;
-	}
-
 	public int setFood() {
 		food = food - 1;
 		return food;
